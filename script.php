@@ -1,15 +1,15 @@
 <?php 
-$userNumber = $_POST["userNumber"];
+$number = $_POST["number"];
+$base = $_POST["base"];
 
+function countdown($number) {
 
-function countdown($userNumber) {
-
-    if ($userNumber == 0) {
+    if ($number == 0) {
         
         echo "VA BENE LO STESSO";
     }else {
-        echo $userNumber . "<br>" ;
-        countdown(--$userNumber);
+        echo $number . "<br>" ;
+        countdown(--$number);
     }
 }
 function factorial($number) {
@@ -22,6 +22,17 @@ function factorial($number) {
 
 
 }
+function baseConvert($number, $base) {
+    if($number == 0) {
+       
+    } else {
+
+        return baseConvert(intval($number / $base), $base) . ($number % $base) ;
+        
+    }
+    
+}
+$convertedNumber = base_convert($number, 10, $base);
 
 ?>
 
@@ -38,11 +49,17 @@ function factorial($number) {
 <body >
     <div >
         <p>
-            <?php  countdown($userNumber) ;?>
+            <?php  countdown($number) ;?>
             
         </p>
         <p>
-            <?php echo factorial($userNumber) ;?>
+            <?php echo factorial($number) ;?>
+        </p>
+        <p>
+            <?php echo  $convertedNumber  ?>
+        </p>
+        <p>
+            <?php echo  baseConvert($number, $base) ?>
         </p>
     </div>
 
